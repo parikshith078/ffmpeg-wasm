@@ -43,16 +43,14 @@
 	}
 
 	async function loadFFmpeg() {
-		const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
-
 		ffmpeg = new FFmpeg();
 
 		ffmpeg.on('progress', (event) => {
 			$progress = event.progress * 100;
 		});
 		await ffmpeg.load({
-			coreURL: `${baseURL}/ffmpeg-core.js`,
-			wasmURL: `${baseURL}/ffmpeg-core.wasm`
+			coreURL: '/ffmpeg/ffmpeg-core.js',
+			wasmURL: '/ffmpeg/ffmpeg-core.wasm'
 		});
 
 		state = 'loaded';
